@@ -33,7 +33,6 @@ display the character's attributes in a creative and humorous way.
 */
 
 // Declare and initialize variables
-// Declare and initialize variables
 let characterName = "Captain Waffles";
 let age = Math.floor(Math.random() * 80) + 1; // Random age between 1–80
 let isSuperhero = true;
@@ -44,7 +43,6 @@ let favoriteFood = "pizza";
 
 // Function to generate a random character description
 
-// Function to generate a random character description
 function generateCharacter() {
     characterName = getRandomName();
     age = Math.floor(Math.random() * 80) + 1;
@@ -65,7 +63,6 @@ function getRandomFood() {
 
 // Functions to update character's age
 
-// Functions to update character's age
 function increaseAge() {
     age++;
     updateDescription();
@@ -83,3 +80,14 @@ function decreaseAge() {
 
 // Add event listeners for buttons using querySelector
 
+function updateDescription() {
+    const power = specialPowers[Math.floor(Math.random() * specialPowers.length)];
+    const role = isSuperhero ? "superhero" : "villain";
+    document.querySelector("#characterDescription").textContent =
+        `Meet ${characterName}, a ${age}-year-old ${role} who loves ${favoriteFood} and can ${power}!`;
+}
+document.querySelector("#generateButton").addEventListener("click", generateCharacter);
+document.querySelector("#increaseAgeButton").addEventListener("click", increaseAge);
+document.querySelector("#decreaseAgeButton").addEventListener("click", decreaseAge);
+
+updateDescription();
