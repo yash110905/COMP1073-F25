@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>See 'N' Say — Storymaker (JS emulation)</title>
+  <style>
+    /* Simple, responsive layout inspired by the original toy. Keep CSS separate in real projects. */
+    :root{
+      --bg:#ffe733; /* toy yellow */
+      --accent:#0ea5a1;
+      --card:#fff;
+      --gap:12px;
+      font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    body{background:linear-gradient(180deg,#f8f3b2, #fff);padding:24px;display:flex;align-items:center;justify-content:center;min-height:100vh}
+    .player{background:var(--bg);border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.12);display:flex;gap:var(--gap);padding:16px;max-width:920px;width:100%;align-items:stretch}
+    .left{flex:1;display:grid;grid-template-rows:repeat(5,auto) 1fr;gap:10px}
+    .slot{display:flex;align-items:center;gap:10px;padding:8px;border-radius:8px}
+    .label{min-width:88px;font-weight:700}
+    .choice{flex:1;background:#fff;border-radius:8px;padding:10px;text-align:center;box-shadow:inset 0 -2px 0 rgba(0,0,0,.04)}
+    .controls{display:flex;gap:8px}
+    button{cursor:pointer;border:0;padding:8px 12px;border-radius:8px;font-weight:600}
+    .cycle{background:linear-gradient(180deg,#fffb,#f3f3f3)}
+    .play{background:linear-gradient(180deg,#34d399,#10b981);color:white}
+    .random{background:linear-gradient(180deg,#60a5fa,#3b82f6);color:white}
+    .reset{background:linear-gradient(180deg,#fda4af,#fb7185);color:white}
+
+    .right{width:300px;display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:flex-start}
+    .speaker{background:#fff;border-radius:8px;padding:14px;width:100%;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.07)}
+    .story{min-height:120px;padding:12px;border-radius:8px;background:linear-gradient(180deg,#fff,#f8fafc);width:100%;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.02rem}
+    .toy-buttons{display:flex;gap:8px}
+    .dot{width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:white}
+    .dot.purple{background:#9f7aea}
+    .dot.cyan{background:#06b6d4}
+    .dot.green{background:#34d399}
+    .dot.orange{background:#fb923c}
+    .dot.pink{background:#f472b6}
+
+    footer{margin-top:8px;font-size:0.86rem;color:#334155}
+    @media (max-width:760px){.player{flex-direction:column}.right{width:100%}}
+  </style>
+</head>
+<body>
+  <main class="player" role="application" aria-label="See 'N' Say Storymaker emulator">
+    <section class="left" aria-hidden="false">
+      <!-- Five slots: each cycles through an array of choices -->
+      <div class="slot" id="slot-0">
+        <div class="label">1. Who</div>
+        <div class="choice" id="text-0">The turkey</div>
+        <div class="controls">
+          <button class="cycle" data-slot="0" aria-label="Cycle who">▶</button>
+        </div>
+      </div>
+
+      <div class="slot" id="slot-1">
+        <div class="label">2. Action</div>
+        <div class="choice" id="text-1">sat on</div>
+        <div class="controls">
+          <button class="cycle" data-slot="1" aria-label="Cycle action">▶</button>
+        </div>
+      </div>
+
+      <div class="slot" id="slot-2">
+        <div class="label">3. What</div>
+        <div class="choice" id="text-2">a funny goat</div>
+        <div class="controls">
+          <button class="cycle" data-slot="2" aria-label="Cycle object">▶</button>
+        </div>
+      </div>
+
+      <div class="slot" id="slot-3">
+        <div class="label">4. Place</div>
+        <div class="choice" id="text-3">on the moon</div>
+        <div class="controls">
+          <button class="cycle" data-slot="3" aria-label="Cycle place">▶</button>
+        </div>
+      </div>
+
+      <div class="slot" id="slot-4">
+        <div class="label">5. Finisher</div>
+        <div class="choice" id="text-4">in my shoes</div>
+        <div class="controls">
+          <button class="cycle" data-slot="4" aria-label="Cycle finisher">▶</button>
+        </div>
+      </div>
+
+      <!-- Action row -->
+      <div style="display:flex;gap:10px;align-items:center">
+        <button id="btn-story" class="play" aria-label="Show story">Show Story</button>
+        <button id="btn-random" class="random" aria-label="Random story">Random</button>
+        <button id="btn-reset" class="reset" aria-label="Reset story">Reset</button>
+        <button id="btn-audio" class="play" style="background:linear-gradient(180deg,#f59e0b,#f97316);" aria-label="Play audio">🔊 Read Aloud</button>
+      </div>
+    </section>
+
+    <aside class="right">
+      <div class="speaker" role="status" aria-live="polite">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>Story Output</strong>
+          <div class="toy-buttons">
+            <span class="dot purple">1</span>
+            <span class="dot cyan">2</span>
+            <span class="dot green">3</span>
+            <span class="dot orange">4</span>
+            <span class="dot pink">5</span>
+          </div>
+        </div>
+        <div class="story" id="story">Your story will appear here when you click <em>Show Story</em>.</div>
+      </div>
+      <footer>Tip: Click each ▶ to cycle choices. Click Random to auto-select a story.</footer>
+    </aside>
+  </main>
+
+  <script>
+    /* =====================
+       Story arrays - one array per slot.
+       You can modify these to create different story sets.
+       ===================== */
+    const choices = [
+      ["The turkey","Mom","Dad","The dog","My teacher","The elephant","The cat","A pirate","A spaceman","A frog"],
+      ["sat on","ate","danced with","saw","doesn't like","kissed","found","jumped over","chased","hugged"],
+      ["a funny goat","a scary monkey","a goofy fish","a slimy frog","a barking dog","a fat worm","a shiny ball","a magic hat","a lost shoe","a red apple"],
+      ["on the moon","on the chair","in my spaghetti","in my soup","on the grass","under the bed","at school","in the kitchen","by the river","at the park"],
+      ["in my shoes","with a smile","and then they laughed","and everyone clapped","for no reason","until bedtime","and then flew away","then it rained","and it sparkled","and the end"]
+    ];
+
+    // Track current index for each slot
+    const idx = [0,0,0,0,0];
+
+    // Initialize UI text from default idx
+    function updateAllText(){
+      for(let i=0;i<5;i++){
+        document.getElementById('text-'+i).textContent = choices[i][idx[i]];
+      }
+    }
+    updateAllText();
+
+    // Cycle function: advances index and updates displayed text
+    function cycleSlot(slot){
+      idx[slot] = (idx[slot] + 1) % choices[slot].length;
+      document.getElementById('text-'+slot).textContent = choices[slot][idx[slot]];
+    }
+
+    // Wire up cycle buttons
+    document.querySelectorAll('.cycle').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const s = Number(btn.getAttribute('data-slot'));
+        cycleSlot(s);
+      });
+
+      // Allow keyboard activation (space/enter on focused button) — buttons already do this by default.
+    });
+
+    // Build story by combining five parts into a sentence
+    function buildStory(){
+      const parts = idx.map((i,slot)=>choices[slot][i]);
+      // Simple sentence construction. You can change grammar rules here.
+      const sentence = `${parts[0]} ${parts[1]} ${parts[2]} ${parts[3]} ${parts[4]}.`;
+      return sentence.replace(/\s+/g,' ').trim();
+    }
+
+    // Show story on the page
+    document.getElementById('btn-story').addEventListener('click', ()=>{
+      const s = buildStory();
+      document.getElementById('story').textContent = s;
+    });
+
+    // Random story: choose a random index for each slot
+    document.getElementById('btn-random').addEventListener('click', ()=>{
+      for(let i=0;i<5;i++) idx[i] = Math.floor(Math.random()*choices[i].length);
+      updateAllText();
+      // Optionally show it immediately
+      document.getElementById('story').textContent = buildStory();
+    });
+
+    // Reset to defaults (index 0)
+    document.getElementById('btn-reset').addEventListener('click', ()=>{
+      for(let i=0;i<5;i++) idx[i]=0;
+      updateAllText();
+      document.getElementById('story').textContent = 'Your story will appear here when you click Show Story.';
+    });
+
+    // Read aloud using Web Speech API (if available)
+    document.getElementById('btn-audio').addEventListener('click', ()=>{
+      const s = buildStory();
+      if(!('speechSynthesis' in window)){
+        alert('Sorry — your browser does not support speech synthesis.');
+        return;
+      }
+      const utter = new SpeechSynthesisUtterance(s);
+      // light customization (use default voice)
+      utter.rate = 0.95; // slightly slower for children
+      utter.pitch = 1.0;
+      speechSynthesis.cancel(); // stop any existing speech
+      speechSynthesis.speak(utter);
+      // show story while reading
+      document.getElementById('story').textContent = s;
+    });
+
+    // Optional: make clicking the choice text cycle too (like the toy)
+    for(let i=0;i<5;i++){
+      document.getElementById('text-'+i).addEventListener('click', ()=>cycleSlot(i));
+    }
+
+    // Accessibility: allow left/right arrow keys to move through choices when a slot is focused
+    document.querySelectorAll('.choice').forEach((el,slot)=>{
+      el.setAttribute('tabindex','0');
+      el.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter'){
+          e.preventDefault();
+          cycleSlot(slot);
+        } else if(e.key === 'ArrowLeft'){
+          e.preventDefault();
+          // go backwards
+          idx[slot] = (idx[slot] - 1 + choices[slot].length) % choices[slot].length;
+          updateAllText();
+        }
+      });
+    });
+
+    // Keep code well commented and organized. This is a single-file demo — for larger projects separate files are recommended.
+  </script>
+</body>
+</html>
