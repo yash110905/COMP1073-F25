@@ -1,7 +1,7 @@
-/*
+/* =====================================================
    page-color-changer.js
    Interactive RGB background color changer
-  */
+   ===================================================== */
 
 // Get references to sliders
 const redSlider = document.getElementById('redSlider');
