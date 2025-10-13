@@ -1,0 +1,58 @@
+/* See 'N' Say Storymaker style.css
+   Author: Yash Patel, 2025 */
+
+body {
+  font-family: "Comic Sans MS", Arial, sans-serif; /* font */
+  text-align: center; /* center content */
+  background: linear-gradient(135deg, #c1f0f6 0%, #d9b3ff 100%); /* background gradient */
+  margin: 0;
+  padding: 0;
+  color: #222; /* text color */
+}
+
+.container {
+  margin-top: 50px;
+  background: #fffbe6; /* container background */
+  display: inline-block;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* shadow */
+}
+
+h1 {
+  color: #7f3fbf; /* heading color */
+  margin-bottom: 10px;
+}
+
+.buttons,
+.actions {
+  margin: 20px 0; /* spacing between button groups */
+}
+
+button {
+  background-color: #ff7f50; /* button color */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s; /* hover effect */
+}
+
+button:hover {
+  background-color: #ff4500; /* hover color */
+  transform: scale(1.08); /* enlarge button on hover */
+}
+
+.story-box {
+  margin-top: 25px;
+  font-size: 1.25em;
+  color: #333;
+  padding: 18px;
+  border: 2px dashed #7f3fbf; /* border */
+  border-radius: 12px;
+  background: #e6fff8; /* output box background */
+  min-height: 50px;
+}
