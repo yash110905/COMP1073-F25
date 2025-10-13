@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>See 'N' Say Storymaker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- added this emoji form "https://emojipedia.org/musical-note "-->
+  <div class="container">
+    <h1>🎵 See 'N' Say Storymaker 🎵</h1>
+    <p>Click each button to choose words for your story!</p>
+<!-- added buttons  -->
+    <div class="buttons">
+      <button id="subjectBtn">Choose Subject</button>
+      <button id="verbBtn">Choose Verb</button>
+      <button id="adjectiveBtn">Choose Adjective</button>
+      <button id="placeBtn">Choose Place</button>
+      <button id="objectBtn">Choose Object</button>
+    </div>
+
+    <div class="actions">
+      <button id="showStoryBtn">Show Story</button>
+      <button id="randomBtn">Random Story</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+
+    <div id="storyOutput" class="story-box"></div>
+  </div>
+
+  <!-- linked js here -->
+  <script src="storymaker.js"></script>
+</body>
+</html>
