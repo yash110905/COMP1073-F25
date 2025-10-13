@@ -1,0 +1,46 @@
+/* =========================
+   STYLE.CSS
+   Simple styling for the RGB color changer
+   ========================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: rgb(125, 125, 125);
+    transition: background-color 0.3s ease;
+    color: #222;
+}
+
+.container {
+    margin-top: 50px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.slider-group {
+    margin: 15px 0;
+}
+
+input[type="range"] {
+    width: 200px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+span {
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.rgb-display {
+    margin-top: 25px;
+    font-size: 1.2em;
+}
