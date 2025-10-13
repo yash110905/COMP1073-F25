@@ -56,3 +56,6 @@ button:hover {
   background: #e6fff8; /* output box background */
   min-height: 50px;
 }
+.story-box.emoji {
+  font-size: 2em; /* larger emoji */
+}
