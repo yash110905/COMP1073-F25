@@ -27,3 +27,8 @@ function updateBackgroundColor() {
     //Log the current color for debugging
     console.log(`Background color changed to: ${rgbColor}`);
 }
+// Step 3: Event listeners for user input
+// Whenever the user moves any of the sliders, the background color updates
+redSlider.addEventListener("input", updateBackgroundColor);
+greenSlider.addEventListener("input", updateBackgroundColor);
+blueSlider.addEventListener("input", updateBackgroundColor);
