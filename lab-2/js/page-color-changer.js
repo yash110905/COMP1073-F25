@@ -32,3 +32,5 @@ function updateBackgroundColor() {
 redSlider.addEventListener("input", updateBackgroundColor);
 greenSlider.addEventListener("input", updateBackgroundColor);
 blueSlider.addEventListener("input", updateBackgroundColor);
+// Step 4: Initialize default color on page load
+updateBackgroundColor();
