@@ -4,6 +4,8 @@
     */
 // Step 1: Get references to HTML elements
 // Range sliders
+window.addEventListener("DOMContentLoaded", () => {   
+
 const redSlider = document.getElementById("red");
 const greenSlider = document.getElementById("green");
 const blueSlider = document.getElementById("blue");
@@ -34,3 +36,4 @@ greenSlider.addEventListener("input", updateBackgroundColor);
 blueSlider.addEventListener("input", updateBackgroundColor);
 // Step 4: Initialize default color on page load
 updateBackgroundColor();
+});
