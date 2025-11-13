@@ -8,4 +8,23 @@ h1 {
     color: #ff4da6;
     text-align: center;
 }
+form {
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.checkboxes label {
+    display: block;
+    margin-left: 10px;
+}
 
