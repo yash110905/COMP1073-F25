@@ -5,7 +5,7 @@ body {
 }
 
 h1 {
-    color: #ff4da6;
+    color: #6f0b0b;
     text-align: center;
 }
 form {
@@ -32,7 +32,7 @@ button {
     width: 100%;
     padding: 12px;
     border: none;
-    background: #ff4da6;
+    background: #f11c1c;
     color: white;
     font-size: 16px;
     border-radius: 8px;
@@ -40,7 +40,7 @@ button {
 }
 
 button:hover {
-    background: #e60073;
+    background: #dd1951;
 }
 
 #output {
