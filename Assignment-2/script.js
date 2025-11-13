@@ -1,6 +1,7 @@
 // Smoothie Class
 class Smoothie {
     constructor(size, base, ingredients, sweetener) {
+        this.name = name; // name property
         this.size = size;
         this.base = base;
         this.ingredients = ingredients;
@@ -9,6 +10,7 @@ class Smoothie {
 
     describe() {
         return `
+            <strong>Customer:</strong> ${this.name || "No name provided"} <br>
             <strong>Size:</strong> ${this.size} <br>
             <strong>Base:</strong> ${this.base} <br>
             <strong>Ingredients:</strong> ${this.ingredients.join(", ")} <br>
@@ -19,7 +21,7 @@ class Smoothie {
 
 // Order Button 
 document.getElementById("orderButton").addEventListener("click", function () {
-
+    const name = document.getElementById("customerName").value;
     const size = document.getElementById("size").value;
     const base = document.getElementById("base").value;
     const sweetener = document.getElementById("sweetener").value;
