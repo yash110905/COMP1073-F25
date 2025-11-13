@@ -17,3 +17,19 @@ class Smoothie {
     }
 }
 
+// Order Button 
+document.getElementById("orderButton").addEventListener("click", function () {
+
+    const size = document.getElementById("size").value;
+    const base = document.getElementById("base").value;
+    const sweetener = document.getElementById("sweetener").value;
+
+    const ingredients = [];
+    document.querySelectorAll(".checkboxes input:checked").forEach(item => {
+        ingredients.push(item.value);
+    });
+
+    const smoothie = new Smoothie(size, base, ingredients, sweetener);
+    
+    document.getElementById("output").innerHTML = smoothie.describe();
+});
