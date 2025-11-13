@@ -1,7 +1,7 @@
 // Smoothie Class
 class Smoothie {
     constructor(name, size, base, ingredients, sweetener) {
-        this.name = name; // added name property
+        this.name = name;
         this.size = size;
         this.base = base;
         this.ingredients = ingredients;
@@ -10,10 +10,10 @@ class Smoothie {
 
     describe() {
         return `
-            <strong>Customer:</strong> ${this.name || "No name provided"} <br>
+            <h3>${this.name || "Your"} Smoothie</h3>
             <strong>Size:</strong> ${this.size} <br>
             <strong>Base:</strong> ${this.base} <br>
-            <strong>Ingredients:</strong> ${this.ingredients.join(", ")} <br>
+            <strong>Ingredients:</strong> ${this.ingredients.length > 0 ? this.ingredients.join(", ") : "None"} <br>
             <strong>Sweetener:</strong> ${this.sweetener}
         `;
     }
@@ -22,7 +22,7 @@ class Smoothie {
 // Order Button 
 document.getElementById("orderButton").addEventListener("click", function () {
 
-    const name = document.getElementById("customerName").value; // get customer name
+    const name = document.getElementById("customerName").value.trim();
     const size = document.getElementById("size").value;
     const base = document.getElementById("base").value;
     const sweetener = document.getElementById("sweetener").value;
@@ -34,8 +34,5 @@ document.getElementById("orderButton").addEventListener("click", function () {
 
     const smoothie = new Smoothie(name, size, base, ingredients, sweetener);
 
-    
-    document.getElementById("smoothieHeading").textContent = `${name || "Your"} Smoothie`;
-
     document.getElementById("output").innerHTML = smoothie.describe();
-});//so, when the Order button is clicked, the code collects all selected form values (size, base, ingredients, sweetener), creates a new Smoothie object, and displays its description on the page
+});
