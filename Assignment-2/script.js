@@ -32,4 +32,4 @@ document.getElementById("orderButton").addEventListener("click", function () {
     const smoothie = new Smoothie(size, base, ingredients, sweetener);
     
     document.getElementById("output").innerHTML = smoothie.describe();
-});
+});//so, when the Order button is clicked, the code collects all selected form values (size, base, ingredients, sweetener), creates a new Smoothie object, and displays its description on the page
