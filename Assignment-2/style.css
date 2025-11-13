@@ -27,4 +27,28 @@ label {
     display: block;
     margin-left: 10px;
 }
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #ff4da6;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e60073;
+}
+
+#output {
+    margin-top: 20px;
+    background: #fff0f7;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 100px;
+}
+
 
