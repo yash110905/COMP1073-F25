@@ -52,3 +52,25 @@ button:hover {
 }
 
 
+/* Style for all dropdown menus  */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background: #fff;
+    appearance: none;
+    cursor: pointer;
+}
+
+
+select::-ms-expand {
+    display: none; 
+}
+
+
+select:hover {
+    border-color: #f11c1c;
+}
