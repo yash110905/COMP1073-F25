@@ -54,3 +54,22 @@ const mclarenCar = new ToyCar(
 );
 
 const carContainer = document.getElementById("carContainer");
+function displayCar(car) {
+    const card = document.createElement("div");
+    card.className = "carCard";
+
+    card.innerHTML = `
+        <h2>${car.brand} - ${car.model}</h2>
+        <p><strong>Color:</strong> ${car.color}</p>
+        <p><strong>Decade:</strong> ${car.decade}</p>
+        <p><strong>Packaging:</strong> ${car.packaging}</p>
+        <p><strong>Scale:</strong> ${car.scale}</p>
+        <p><strong>Vehicle Type:</strong> ${car.vehicleType}</p>
+        <p><strong>SKU:</strong> ${car.sku}</p>
+        <p><strong>UPC:</strong> ${car.upc}</p>
+        <p><strong>Price:</strong> $${car.price}</p>
+        <p><strong>Size:</strong> ${car.length}" L × ${car.width}" W × ${car.height}" H</p>
+        <p><strong>Features:</strong> ${car.features}</p>
+        <p><strong>Quantity Left:</strong> <span id="qty">${car.quantity}</span></p>
+    `;
+}
