@@ -61,7 +61,7 @@ function displayCar(car) {
     card.className = "carCard";
 
     card.innerHTML = `
-        <img src="mclaren.jpg" alt="${car.model}" class="carImage">
+        <img src="images/mclaren.png" alt="${car.model}" class="carImage">
         <h2>${car.brand} - ${car.model}</h2>
         <p><strong>Color:</strong> ${car.color}</p>
         <p><strong>Decade:</strong> ${car.decade}</p>
