@@ -14,7 +14,7 @@ body {
 }
 
 .carCard {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9);
     padding: 15px;
     width: 270px;
     border-radius: 12px;
