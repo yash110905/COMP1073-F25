@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 20px;
+}
+
+#carContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.carCard {
+    background: #fff;
+    padding: 15px;
+    width: 270px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    text-align: left;
+}
+
+.carCard h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.carCard p {
+    margin: 5px 0;
+    font-size: 14px;
+}
