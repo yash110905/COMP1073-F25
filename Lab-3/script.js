@@ -73,21 +73,21 @@ function displayCar(car) {
         <p><strong>Price:</strong> $${car.price}</p>
         <p><strong>Size:</strong> ${car.length}" L × ${car.width}" W × ${car.height}" H</p>
         <p><strong>Features:</strong> ${car.features}</p>
-        <p><strong>Quantity Left:</strong> <span id="qty">${car.quantity}</span></p>
+        <p><strong>Quantity Left:</strong> <span class="qty">${car.quantity}</span></p>
     `;
 
     const increaseBtn = document.createElement("button");
     increaseBtn.textContent = "Increase Quantity";
     increaseBtn.onclick = () => {
         car.quantity++;
-        document.getElementById("qty").textContent = car.quantity;
+        card.querySelector(".qty").textContent = car.quantity;
     };
 
     const decreaseBtn = document.createElement("button");
     decreaseBtn.textContent = "Decrease Quantity";
     decreaseBtn.onclick = () => {
         if (car.quantity > 0) car.quantity--;
-        document.getElementById("qty").textContent = car.quantity;
+        card.querySelector(".qty").textContent = car.quantity;
     };
 
     card.appendChild(increaseBtn);
