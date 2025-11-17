@@ -35,3 +35,22 @@ function ToyCar(
         return `${this.brand} ${this.model} (${this.scale}) - $${this.price}`;
     };
 }
+const mclarenCar = new ToyCar(
+    "McLaren",
+    "MCL38 Miami GP, #81 Oscar Piastri",
+    "Orange",
+    "After 2000",
+    "Window Box",
+    "1/43 Scale",
+    "Race Car",
+    "18-38214/81-BGO-OSCAR",
+    "694365750238",
+    10.99,
+    5,
+    1.75,
+    1,
+    "Extensive detail, electrostatic paint coating, diecast metal & plastic parts",
+    1
+);
+
+const carContainer = document.getElementById("carContainer");
