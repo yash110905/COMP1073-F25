@@ -91,3 +91,4 @@ function displayCar(car) {
 
     carContainer.appendChild(card);
 }
+displayCar(mclarenCar);
