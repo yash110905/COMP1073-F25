@@ -46,14 +46,12 @@ button:hover {
 }
 .carImage {
     width: 100%;
+    height: auto;
+    display: block;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 body {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-              url("mclaren1.jpg") no-repeat center center fixed;
+  background: url("images/mclaren1.jpg") no-repeat center center fixed;
   background-size: cover;
-  font-family: Arial, sans-serif;
-  color: white;
-  padding: 20px;
 }

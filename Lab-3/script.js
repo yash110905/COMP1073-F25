@@ -35,6 +35,7 @@ function ToyCar(
         return `${this.brand} ${this.model} (${this.scale}) - $${this.price}`;
     };
 }
+
 const mclarenCar = new ToyCar(
     "McLaren",
     "MCL38 Miami GP, #81 Oscar Piastri",
@@ -54,6 +55,7 @@ const mclarenCar = new ToyCar(
 );
 
 const carContainer = document.getElementById("carContainer");
+
 function displayCar(car) {
     const card = document.createElement("div");
     card.className = "carCard";
@@ -73,6 +75,7 @@ function displayCar(car) {
         <p><strong>Features:</strong> ${car.features}</p>
         <p><strong>Quantity Left:</strong> <span id="qty">${car.quantity}</span></p>
     `;
+
     const increaseBtn = document.createElement("button");
     increaseBtn.textContent = "Increase Quantity";
     increaseBtn.onclick = () => {
@@ -92,4 +95,5 @@ function displayCar(car) {
 
     carContainer.appendChild(card);
 }
+
 displayCar(mclarenCar);
