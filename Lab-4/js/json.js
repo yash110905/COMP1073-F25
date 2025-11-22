@@ -57,7 +57,26 @@ function showTopFlavors(jsonObj) {
     img.alt = topFlavors[i].name;
 
     calories.textContent = `Calories: ${topFlavors[i].calories}`;
+    if (topFlavors[i].calories > 400) {
+      calories.style.color = "red";
+      calories.style.fontWeight = "bold";
+    }
+
     type.textContent = `Type: ${topFlavors[i].type}`;
+    switch (topFlavors[i].type.toLowerCase()) {
+      case "ice cream":
+        type.style.color = "blue";
+        break;
+      case "sorbet":
+        type.style.color = "orange";
+        break;
+      case "frozen yogurt":
+        type.style.color = "purple";
+        break;
+      default:
+        type.style.color = "black";
+    }
+
     ingredientsHeader.textContent = "Ingredients:";
 
     // STEP 10g: Loop ingredients
