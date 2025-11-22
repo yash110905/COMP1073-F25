@@ -27,3 +27,14 @@ async function populate() {
 
 // STEP 3b: Call the populate() function
 populate();
+/* STEP 9b: Build populateHeader() */
+function populateHeader(jsonObj) {
+  const h1 = document.createElement("h1");
+  h1.textContent = jsonObj.companyName;
+
+  const p = document.createElement("p");
+  p.textContent = `Head Office: ${jsonObj.headOffice} — Established: ${jsonObj.established}`;
+
+  header.appendChild(h1);
+  header.appendChild(p);
+}
