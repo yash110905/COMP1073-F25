@@ -67,3 +67,15 @@ function showTopFlavors(jsonObj) {
       listItem.textContent = ingredients[j];
       list.appendChild(listItem);
     }
+    // STEP 10h: Append elements to the article
+    article.appendChild(h2);
+    article.appendChild(img);
+    article.appendChild(calories);
+    article.appendChild(type);
+    article.appendChild(ingredientsHeader);
+    article.appendChild(list);
+
+    // STEP 10i: Add article to section
+    section.appendChild(article);
+  }
+}
