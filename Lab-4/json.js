@@ -51,3 +51,19 @@ function showTopFlavors(jsonObj) {
     const type = document.createElement("p");
     const ingredientsHeader = document.createElement("p");
     const list = document.createElement("ul");
+    // Fill content
+    h2.textContent = topFlavors[i].name;
+    img.src = "images/" + topFlavors[i].image;
+    img.alt = topFlavors[i].name;
+
+    calories.textContent = `Calories: ${topFlavors[i].calories}`;
+    type.textContent = `Type: ${topFlavors[i].type}`;
+    ingredientsHeader.textContent = "Ingredients:";
+
+    // STEP 10g: Loop ingredients
+    const ingredients = topFlavors[i].ingredients;
+    for (let j = 0; j < ingredients.length; j++) {
+      const listItem = document.createElement("li");
+      listItem.textContent = ingredients[j];
+      list.appendChild(listItem);
+    }
