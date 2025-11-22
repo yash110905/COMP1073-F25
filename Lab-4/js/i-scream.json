@@ -25,6 +25,28 @@
         "clover honey"
       ],
       "image": "peach-mango.svg"
+    },
+    {
+      "name": "Galactic Grape Blast",
+      "calories": 420,
+      "type": "ice cream",
+      "ingredients": [
+        "grape concentrate",
+        "purple stardust sprinkles",
+        "cream base"
+      ],
+      "image": "grape.svg"
+    },
+    {
+      "name": "Blueberry Thunder Swirl",
+      "calories": 380,
+      "type": "frozen yogurt",
+      "ingredients": [
+        "blueberry puree",
+        "electric blue syrup",
+        "vanilla yogurt"
+      ],
+      "image": "blueberry.svg"
     }
   ]
 }
