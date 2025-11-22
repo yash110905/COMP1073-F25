@@ -38,3 +38,16 @@ function populateHeader(jsonObj) {
   header.appendChild(h1);
   header.appendChild(p);
 }
+/* STEP 10b: Build showTopFlavors() */
+function showTopFlavors(jsonObj) {
+  let topFlavors = jsonObj.topFlavors;
+
+  for (let i = 0; i < topFlavors.length; i++) {
+    // Create article + elements
+    const article = document.createElement("article");
+    const h2 = document.createElement("h2");
+    const img = document.createElement("img");
+    const calories = document.createElement("p");
+    const type = document.createElement("p");
+    const ingredientsHeader = document.createElement("p");
+    const list = document.createElement("ul");
