@@ -9,5 +9,21 @@ fetch('https://api.thedogapi.com/v1/images/search', {
 })
 .then(res => res.json())
 .then(data => {
+    const card = document.createElement('div');
+    card.classList.add('dog-card');
+
+    const dogImg = document.createElement('img');
+    dogImg.src = data[0].url;
+    card.appendChild(dogImg);
+
+    const breedName = document.createElement('p');
+    if (data[0].breeds && data[0].breeds.length > 0) {
+      breedName.textContent = `Breed: ${data[0].breeds[0].name}`;
+    } else {
+      breedName.textContent = `Breed: Unknown`;
+    }
+    card.appendChild(breedName);
+
+    container.prepend(card);
   
 })
