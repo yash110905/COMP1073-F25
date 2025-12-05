@@ -24,3 +24,115 @@ header {
   top: 0;
   z-index: 100;
 }
+header .logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+header nav a {
+  margin-left: 30px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+header nav a:hover {
+  color: #ff7e5f;
+}
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 20px;
+  flex-direction: column;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #fff;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #f0f0f0;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+button {
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #ff7e5f, #feb47b);
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+.dog-gallery {
+  padding: 40px 20px;
+  flex: 1;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.dog-card {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.dog-card:hover {
+  transform: translateY(-5px);
+}
+
+.dog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+
+.dog-card img:hover {
+  transform: scale(1.05);
+}
+
+.dog-card p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  font-size: 0.9rem;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+}
